@@ -54,6 +54,12 @@ def QuestionForm(user, *args, **kwargs):
                 if qf:
                     qf.widget = qf.hidden_widget()
                     qf.required = False
+            
+            #Not sure about 'category' or 'category_create'
+            self.fields['categories'].widget = CustomRelatedFieldWidgetWrapper(
+                                                FilteredSelectMultiple(('category'),False,),
+                                                reverse('category_create'),
+                                                True)
 
         # honey pot!
         phone_number = forms.CharField(required=False)
@@ -61,6 +67,15 @@ def QuestionForm(user, *args, **kwargs):
         def clean_user(self):
             return user
 
+        #Added this, assuming it is needed
+        class Media:
+            ## media for the FilteredSelectMultiple widget
+            css = {
+                'all':(ADMIN_MEDIA_PREFIX + 'css/widgets.css',),
+            }
+            # jsi18n is required by the widget
+            js = ( ADMIN_MEDIA_PREFIX + 'js/admin/RelatedObjectLookups.js',)
+        
         class Meta:
             model = Question
             fields = selected_fields

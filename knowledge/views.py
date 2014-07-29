@@ -204,7 +204,14 @@ def knowledge_ask(request,
     if settings.LOGIN_REQUIRED and not request.user.is_authenticated():
         return HttpResponseRedirect(settings.LOGIN_URL+"?next=%s" % request.path)
 
+    if request.method == 'GET':
+        if ('_popup' in self.request.GET):
+            popup = self.request.GET['_popup']
+    
     if request.method == 'POST':
+        if "_popup" in request.POST:
+            return HttpResponse('<script type="text/javascript">opener.dismissAddAnotherPopup(window, "%s", "%s");</script>' % \
+                (escape(self.object.pk), escapejs(self.object)))
         form = Form(request.user, request.POST)
         if form and form.is_valid():
             if request.user.is_authenticated() or not form.cleaned_data['phone_number']:
@@ -221,4 +228,5 @@ def knowledge_ask(request,
         'form': form,
         'categories': Category.objects.all(),
         'BASE_TEMPLATE' : settings.BASE_TEMPLATE,
+        'popup' : popup,
     })
