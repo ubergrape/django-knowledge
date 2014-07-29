@@ -205,8 +205,8 @@ def knowledge_ask(request,
         return HttpResponseRedirect(settings.LOGIN_URL+"?next=%s" % request.path)
 
     if request.method == 'GET':
-        if ('_popup' in self.request.GET):
-            popup = self.request.GET['_popup']
+        if ('_popup' in request.GET):
+            popup = request.GET['_popup']
     
     if request.method == 'POST':
         if "_popup" in request.POST:
