@@ -227,6 +227,9 @@ def knowledge_ask(request,
     })
     
 class CategoryCreateView(CreateView):
+    model = Category
+    template_name = 'django_knowledge/ask.html'
+
     def get_context_data(self, **kwargs):
         context = super(CategoryCreateView,self).get_context_data(**kwargs)
         if ('_popup' in self.request.GET):
