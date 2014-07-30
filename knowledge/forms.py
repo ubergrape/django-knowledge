@@ -61,7 +61,7 @@ def QuestionForm(user, *args, **kwargs):
             #Not sure about 'category' or 'category_create'
             self.fields['categories'].widget = CustomRelatedFieldWidgetWrapper(
                                                 FilteredSelectMultiple(('category'),False,),
-                                                reverse('knowledge_ask'),
+                                                reverse('category_create'),
                                                 True)
 
         # honey pot!
