@@ -4,6 +4,7 @@ from django.utils.translation import ugettext_lazy as _
 from knowledge import settings
 from knowledge.models import Question, Response
 from knowledge.widgets import CustomRelatedFieldWidgetWrapper
+from django.contrib.admin.widgets import FilteredSelectMultiple
 
 OPTIONAL_FIELDS = ['alert', 'phone_number', 'categories']
 
