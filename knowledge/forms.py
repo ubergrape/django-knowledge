@@ -2,7 +2,7 @@ from django import forms
 from django.utils.translation import ugettext_lazy as _
 
 import settings
-from models import Question, Response
+from models import Question, Response, Category
 from widgets import CustomRelatedFieldWidgetWrapper
 from django.contrib.admin.widgets import FilteredSelectMultiple
 from django.core.urlresolvers import reverse
@@ -63,6 +63,8 @@ def QuestionForm(user, *args, **kwargs):
                                                 FilteredSelectMultiple(('category'),False,),
                                                 reverse('category_create'),
                                                 True)
+
+            self.fields['categories'].queryset = Category.objects.all()
 
         # honey pot!
         phone_number = forms.CharField(required=False)
