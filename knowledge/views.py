@@ -1,13 +1,14 @@
+from django.utils.html import escape, escapejs
 import settings
 
-from django.http import Http404, HttpResponseRedirect
+from django.http import Http404, HttpResponseRedirect, HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.core.urlresolvers import reverse, NoReverseMatch
 from django.db.models import Q
 
-from knowledge.models import Question, Response, Category
-from knowledge.forms import QuestionForm, ResponseForm
-from knowledge.utils import paginate
+from models import Question, Response, Category
+from forms import QuestionForm, ResponseForm
+from utils import paginate
 from django.views.generic import CreateView
 
 
