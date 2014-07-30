@@ -1,7 +1,7 @@
 from django import forms
 from django.utils.translation import ugettext_lazy as _
 
-from knowledge import settings
+from knowledge import settings, views
 from knowledge.models import Question, Response
 from knowledge.widgets import CustomRelatedFieldWidgetWrapper
 from django.contrib.admin.widgets import FilteredSelectMultiple
@@ -61,7 +61,7 @@ def QuestionForm(user, *args, **kwargs):
             #Not sure about 'category' or 'category_create'
             self.fields['categories'].widget = CustomRelatedFieldWidgetWrapper(
                                                 FilteredSelectMultiple(('category'),False,),
-                                                reverse('ask/category_create'),
+                                                reverse('category_create'),
                                                 True)
 
         # honey pot!
