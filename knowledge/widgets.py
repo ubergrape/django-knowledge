@@ -1,4 +1,5 @@
 from django.contrib.admin.widgets import RelatedFieldWidgetWrapper
+from django.utils.safestring import mark_safe
 
 class CustomRelatedFieldWidgetWrapper(RelatedFieldWidgetWrapper):
 
