@@ -5,6 +5,7 @@ from knowledge import settings
 from knowledge.models import Question, Response
 from knowledge.widgets import CustomRelatedFieldWidgetWrapper
 from django.contrib.admin.widgets import FilteredSelectMultiple
+from django.core.urlresolvers import reverse, NoReverseMatch
 
 OPTIONAL_FIELDS = ['alert', 'phone_number', 'categories']
 
