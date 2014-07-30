@@ -204,6 +204,7 @@ def knowledge_ask(request,
     if settings.LOGIN_REQUIRED and not request.user.is_authenticated():
         return HttpResponseRedirect(settings.LOGIN_URL+"?next=%s" % request.path)
 
+    popup = null
     if request.method == 'GET':
         if ('_popup' in request.GET):
             popup = request.GET['_popup']
