@@ -1,7 +1,8 @@
 from django import forms
 from django.utils.translation import ugettext_lazy as _
 
-from knowledge import settings, views
+from knowledge import settings
+from knowledge.views import *
 from knowledge.models import Question, Response
 from knowledge.widgets import CustomRelatedFieldWidgetWrapper
 from django.contrib.admin.widgets import FilteredSelectMultiple
