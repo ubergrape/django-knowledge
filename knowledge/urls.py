@@ -1,4 +1,5 @@
 from django.conf.urls import patterns, url
+from views import CategoryCreateView
 
 urlpatterns = patterns('knowledge.views',
     url(r'^$', 'knowledge_index', name='knowledge_index'),
