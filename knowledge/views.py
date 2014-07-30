@@ -227,6 +227,8 @@ def knowledge_ask(request,
     })
     
 class CategoryCreateView(CreateView):
+    model = Category
+
     def get_context_data(self, **kwargs):
         context = super(CategoryCreateView,self).get_context_data(**kwargs)
         if ('_popup' in self.request.GET):
@@ -234,7 +236,6 @@ class CategoryCreateView(CreateView):
         return context
         
     def post(self, request, *args, **kwargs):
-        self.object = self.get_object()
         ## Save the normal response
         response = super(CategoryCreateView,self).post(request, *args, **kwargs)
         ## This will fire the script to close the popup and update the list
