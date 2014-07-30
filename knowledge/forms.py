@@ -4,6 +4,7 @@ from django.utils.translation import ugettext_lazy as _
 from knowledge import settings
 from knowledge.models import Question, Response
 from knowledge.widgets import CustomRelatedFieldWidgetWrapper
+from settings import STATIC_URL
 
 OPTIONAL_FIELDS = ['alert', 'phone_number', 'categories']
 
@@ -72,10 +73,10 @@ def QuestionForm(user, *args, **kwargs):
         class Media:
             ## media for the FilteredSelectMultiple widget
             css = {
-                'all':(ADMIN_MEDIA_PREFIX + 'css/widgets.css',),
+                'all':(STATIC_URL + 'admin/css/widgets.css',),
             }
             # jsi18n is required by the widget
-            js = ( ADMIN_MEDIA_PREFIX + 'js/admin/RelatedObjectLookups.js',)
+            js = (STATIC_URL + 'admin/js/admin/RelatedObjectLookups.js',)
         
         class Meta:
             model = Question
