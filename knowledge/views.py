@@ -234,6 +234,7 @@ class CategoryCreateView(CreateView):
         return context
         
     def post(self, request, *args, **kwargs):
+        self.object = self.get_object()
         ## Save the normal response
         response = super(CategoryCreateView,self).post(request, *args, **kwargs)
         ## This will fire the script to close the popup and update the list
