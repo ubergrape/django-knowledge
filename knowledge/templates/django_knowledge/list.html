@@ -29,7 +29,7 @@
       <a href="?{% page_query request questions.previous_page_number %}">&larr; {% trans "previous" %}</a>
     {% endif %}
 
-    &nbsp; {% blocktrans with number=questions.number pages=questions.paginator.num_pages %}page {{ number }} of {{ page }}{% endblocktrans %} &nbsp;
+    &nbsp; {% blocktrans with number=questions.number pages=questions.paginator.num_pages %}page {{ number }} of {{ pages }}{% endblocktrans %} &nbsp;
 
     {% if questions.has_next %}
       <a href="?{% page_query request questions.next_page_number %}">{% trans "next" %} &rarr;</a>
