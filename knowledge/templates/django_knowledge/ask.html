@@ -4,13 +4,6 @@
 {% load url from future %}
 
 {% block title %}{% trans "Ask a Question" %}{% endblock title %}
-<head>
-    <!--
-    Adding this for the plus button on the form
-  -->
-  {{ form.media }}
-  <script type="text/javascript" src="{% url 'admin:jsi18n' %}"></script>
-</head>
 
 {% block knowledge_widgets %}
 <div class="dk-widget">
