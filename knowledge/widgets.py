@@ -26,5 +26,5 @@ class CustomRelatedFieldWidgetWrapper(RelatedFieldWidgetWrapper):
         if self.permission:
             output.append(u'<a href="%s" class="add-another" id="add_id_%s" onclick="return showAddAnotherPopup(this);"> ' % \
                 (self.add_url, name))
-            output.append(u'<img src="%simg/admin/icon_addlink.gif" width="10" height="10" alt="%s"/></a>' % ('/static/admin/', 'Add Another'))
+            output.append(u'<img src="%simg/icon_addlink.gif" width="10" height="10" alt="%s"/></a>' % ('/static/admin/', 'Add Another'))
         return mark_safe(u''.join(output))
