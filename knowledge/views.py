@@ -8,7 +8,7 @@ from django.db.models import Q
 
 from models import Question, Response, Category
 from forms import QuestionForm, ResponseForm
-from knowledge.utils import paginate
+from utils import paginate
 from django.views.generic import CreateView
 
 
@@ -225,23 +225,4 @@ def knowledge_ask(request,
         'categories': Category.objects.all(),
         'BASE_TEMPLATE' : settings.BASE_TEMPLATE,
     })
-    
-class CategoryCreateView(CreateView):
-    model = Category
-    template_name = 'django_knowledge/ask.html'
 
-    def get_context_data(self, **kwargs):
-        context = super(CategoryCreateView,self).get_context_data(**kwargs)
-        if ('_popup' in self.request.GET):
-            context['popup'] = self.request.GET['_popup'] 
-        return context
-        
-    def post(self, request, *args, **kwargs):
-        ## Save the normal response
-        response = super(CategoryCreateView,self).post(request, *args, **kwargs)
-        ## This will fire the script to close the popup and update the list
-        if "_popup" in request.POST:
-            return HttpResponse('<script type="text/javascript">opener.dismissAddAnotherPopup(window, "%s", "%s");</script>' % \
-                (escape(self.object.pk), escapejs(self.object)))
-        ## No popup, so return the normal response
-        return response

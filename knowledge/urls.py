@@ -20,6 +20,4 @@ urlpatterns = patterns('knowledge.views',
         'knowledge_moderate', name='knowledge_moderate'),
 
     url(r'^ask/$', 'knowledge_ask', name='knowledge_ask'),
-    
-    url(r'^ask/create_category/$', CategoryCreateView.as_view(), name='category_create'),
 )
