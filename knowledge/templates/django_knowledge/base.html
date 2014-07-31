@@ -1,5 +1,6 @@
 <!doctype html>
 <html lang="en">
+{% load staticfiles %}
 <head>
 
   <meta charset="utf-8">
@@ -8,6 +9,7 @@
   
   <link rel="stylesheet" href="{{ STATIC_URL }}knowledge/css/reset.css">
   <link rel="stylesheet" href="{{ STATIC_URL }}knowledge/css/main.css">
+  <script src="{% static 'admin/js/admin/RelatedObjectLookups.js' %}"></script>
 
 </head>
 
