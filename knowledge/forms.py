@@ -1,8 +1,11 @@
 from django import forms
 from django.utils.translation import ugettext_lazy as _
 
-from knowledge import settings
-from knowledge.models import Question, Response
+import settings
+from models import Question, Response, Category
+from widgets import CustomRelatedFieldWidgetWrapper
+from django.contrib.admin.widgets import FilteredSelectMultiple
+from django.core.urlresolvers import reverse
 
 OPTIONAL_FIELDS = ['alert', 'phone_number', 'categories']
 
@@ -54,6 +57,14 @@ def QuestionForm(user, *args, **kwargs):
                 if qf:
                     qf.widget = qf.hidden_widget()
                     qf.required = False
+            
+            #Not sure about 'category' or 'category_create'
+            self.fields['categories'].widget = CustomRelatedFieldWidgetWrapper(
+                                                FilteredSelectMultiple(('category'),False,),
+                                                reverse('admin:knowledge_category_add'),
+                                                True)
+
+            self.fields['categories'].queryset = Category.objects.all()
 
         # honey pot!
         phone_number = forms.CharField(required=False)

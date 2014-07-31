@@ -90,8 +90,8 @@
         margin-bottom: 1em; }
       .dk-inner .dk-content .dk-widget img {
         max-width: 96%;
-        padding: 1%;
-        border: 1px solid #ccc; }
+        /*padding: 1%;
+        border: 1px solid #ccc;*/ }
       .dk-inner .dk-content .dk-widget ol.question-list {
         font-size: 14px;
         margin-left: 10px; }

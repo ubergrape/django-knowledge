@@ -1,13 +1,13 @@
 import settings
 
-from django.http import Http404, HttpResponseRedirect
+from django.http import Http404, HttpResponseRedirect, HttpResponse
 from django.shortcuts import render, redirect, get_object_or_404
 from django.core.urlresolvers import reverse, NoReverseMatch
 from django.db.models import Q
 
-from knowledge.models import Question, Response, Category
-from knowledge.forms import QuestionForm, ResponseForm
-from knowledge.utils import paginate
+from models import Question, Response, Category
+from forms import QuestionForm, ResponseForm
+from utils import paginate
 
 
 ALLOWED_MODS = {
@@ -204,6 +204,7 @@ def knowledge_ask(request,
     if settings.LOGIN_REQUIRED and not request.user.is_authenticated():
         return HttpResponseRedirect(settings.LOGIN_URL+"?next=%s" % request.path)
 
+    
     if request.method == 'POST':
         form = Form(request.user, request.POST)
         if form and form.is_valid():
@@ -222,3 +223,4 @@ def knowledge_ask(request,
         'categories': Category.objects.all(),
         'BASE_TEMPLATE' : settings.BASE_TEMPLATE,
     })
+
