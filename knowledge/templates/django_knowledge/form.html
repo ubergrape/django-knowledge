@@ -4,8 +4,6 @@
 <form {% if submit_url %}action="{{ submit_url }}"{% endif %} method="post" class="dk-form">
   {% csrf_token %}
 
-  {% if popup %}<input type="hidden" name="_popup" value="1">{% endif %}
-  
   {% for field in form.visible_fields %}
     <div class="field-wrapper field-{{ field.html_name }}">
       <div class="field-label">

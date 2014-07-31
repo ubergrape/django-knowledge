@@ -72,15 +72,6 @@ def QuestionForm(user, *args, **kwargs):
         def clean_user(self):
             return user
 
-        #Added this, assuming it is needed
-        class Media:
-            ## media for the FilteredSelectMultiple widget
-            css = {
-                'all':('/static/admin/css/widgets.css',),
-            }
-            # jsi18n is required by the widget
-            js = ('/static/admin/js/admin/RelatedObjectLookups.js',)
-        
         class Meta:
             model = Question
             fields = selected_fields
