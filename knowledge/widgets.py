@@ -1,5 +1,6 @@
 from django.contrib.admin.widgets import RelatedFieldWidgetWrapper
 from django.utils.safestring import mark_safe
+from django.core.urlresolvers import reverse
 
 class CustomRelatedFieldWidgetWrapper(RelatedFieldWidgetWrapper):
 
@@ -24,7 +25,7 @@ class CustomRelatedFieldWidgetWrapper(RelatedFieldWidgetWrapper):
         self.widget.choices = self.choices
         output = [self.widget.render(name, value, *args, **kwargs)]
         if self.permission:
-            output.append(u'<a href="%s" class="add-another" id="add_id_%s"> ' % \
-                (self.add_url, name))
+            output.append(u'<a href="%s"+"?next=%s" class="add-another" id="add_id_%s"> ' % \
+                (self.add_url, reverse('knowledge_ask'), name))
             output.append(u'<img src="%simg/icon_addlink.gif" width="10" height="10" alt="%s"/></a>' % ('/static/admin/', 'Add Another'))
         return mark_safe(u''.join(output))

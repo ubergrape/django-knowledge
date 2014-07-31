@@ -1,4 +1,3 @@
-from django.utils.html import escape, escapejs
 import settings
 
 from django.http import Http404, HttpResponseRedirect, HttpResponse
@@ -9,7 +8,6 @@ from django.db.models import Q
 from models import Question, Response, Category
 from forms import QuestionForm, ResponseForm
 from utils import paginate
-from django.views.generic import CreateView
 
 
 ALLOWED_MODS = {
