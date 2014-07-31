@@ -8,7 +8,7 @@ from django.db.models import Q
 
 from models import Question, Response, Category
 from forms import QuestionForm, ResponseForm
-from utils import paginate
+from knowledge.utils import paginate
 from django.views.generic import CreateView
 
 
