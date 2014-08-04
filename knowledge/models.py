@@ -8,6 +8,8 @@ from django.conf import settings as django_settings
 from knowledge.managers import QuestionManager, ResponseManager
 from knowledge.signals import knowledge_post_save
 
+from mezzanine.core.fields import RichTextField
+
 STATUSES = (
     ('public', _('Public')),
     ('private', _('Private')),
@@ -45,7 +47,7 @@ class KnowledgeBase(models.Model):
     added = models.DateTimeField(auto_now_add=True)
     lastchanged = models.DateTimeField(auto_now=True)
 
-    user = models.ForeignKey('auth.User' if django.VERSION < (1, 5, 0) else django_settings.AUTH_USER_MODEL, blank=True,
+    user = models.ForeignKey('auth.User' if django.VERSION < (1, 5, 0) else django_settings.AUTH_USER_MODEL, blank=False,
                              null=True, db_index=True)
     alert = models.BooleanField(default=settings.ALERTS,
         verbose_name=_('Alert'),
@@ -150,7 +152,7 @@ class Question(KnowledgeBase):
     title = models.CharField(max_length=255,
         verbose_name=_('Question'),
         help_text=_('Enter your question or suggestion.'))
-    body = models.TextField(blank=True, null=True,
+    body = RichTextField(blank=True, null=True,
         verbose_name=_('Description'),
         help_text=_('Please offer details. Markdown enabled.'))
 
