@@ -3,6 +3,8 @@
   font-family: "Helvetica Neue", Arial, Helvetica, sans-serif; }
   .dk-inner input {
     margin: 0; }
+  .dk-inner .dk-content .dk-widget form.dk-form .field-wrapper .field-input span.mceEditor table.mceLayout {
+    width: 100% !important; }
   .dk-inner .quiet {
     font-weight: normal;
     color: #888; }
