@@ -77,7 +77,7 @@ class Migration(SchemaMigration):
             'Meta': {'ordering': "['-added']", 'object_name': 'Question'},
             'added': ('django.db.models.fields.DateTimeField', [], {'auto_now_add': 'True', 'blank': 'True'}),
             'alert': ('django.db.models.fields.BooleanField', [], {'default': 'False'}),
-            'body': ('django.db.models.fields.TextField', [], {'null': 'True', 'blank': 'True'}),
+            'body': ('mezzanine.core.fields.RichTextField', [], {'null': 'True', 'blank': 'True'}),
             'categories': ('django.db.models.fields.related.ManyToManyField', [], {'to': u"orm['knowledge.Category']", 'symmetrical': 'False', 'blank': 'True'}),
             'email': ('django.db.models.fields.EmailField', [], {'max_length': '75', 'null': 'True', 'blank': 'True'}),
             u'id': ('django.db.models.fields.AutoField', [], {'primary_key': 'True'}),
