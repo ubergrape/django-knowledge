@@ -256,7 +256,7 @@ class Response(KnowledgeBase):
     question = models.ForeignKey('knowledge.Question',
         related_name='responses')
 
-    body = models.TextField(blank=True, null=True,
+    body = RichTextField(blank=True, null=True,
         verbose_name=_('Response'),
         help_text=_('Please enter your response. Markdown enabled.'))
     status = models.CharField(
