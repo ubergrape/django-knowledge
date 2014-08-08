@@ -154,7 +154,7 @@ class Question(KnowledgeBase):
         help_text=_('Enter your question or suggestion.'))
     body = RichTextField(blank=True, null=True,
         verbose_name=_('Description'),
-        help_text=_('Please offer details. Markdown enabled.'))
+        help_text=_('Please offer details.'))
 
     status = models.CharField(
         verbose_name=_('Status'),
@@ -258,7 +258,7 @@ class Response(KnowledgeBase):
 
     body = RichTextField(blank=True, null=True,
         verbose_name=_('Response'),
-        help_text=_('Please enter your response. Markdown enabled.'))
+        help_text=_('Please enter your response.'))
     status = models.CharField(
         verbose_name=_('Status'),
         max_length=32, choices=STATUSES_EXTENDED,
