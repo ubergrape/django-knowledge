@@ -6,9 +6,15 @@
   <h4>{% trans "My Questions" %}</h4>
   <hr />
 
+
   <ul>
-    {% for question in my_questions %}
+    {% for question in my_questions|slice:":5" %}
       <li><a href="{{ question.get_absolute_url }}">{{ question.title }}</a></li>
+    {% endfor %}
+    <li class="togglable"><label class="tree-toggler pointerMouse">Show More</label></li>
+    <li class="togglable" style="display:none"><label class="tree-toggler pointerMouse">Hide</label></li>
+    {% for question in my_questions|slice:"5:" %}
+      <li class="togglable" style="display:none"><a href="{{ question.get_absolute_url }}">{{ question.title }}</a></li>
     {% endfor %}
   </ul>
 
@@ -34,3 +40,16 @@
   <li><a href="{% url "knowledge_ask" %}">{% trans "Ask a question or give suggestion." %}</a></li>
   <li><a href="{% url "knowledge_index" %}">{% trans "Return to homepage." %}</a></li>
 </ul>
+
+<script>
+$(document).ready( function() {
+    toggleItem()
+});
+
+function toggleItem() {
+    $('label.tree-toggler').click(function () {
+        $('li.togglable').toggle(300);
+    });
+
+}
+</script>
