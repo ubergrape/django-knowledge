@@ -42,7 +42,7 @@
       float: left; }
     .dk-inner .dk-search .submit-question-search {
       height: 34px;
-      width: 10%;
+      width: auto;
       padding: 8px 1%;
       float: right;
       background-color: #006700;
@@ -69,7 +69,7 @@
         background-image: -webkit-gradient(linear, left top, left bottom, color-stop(0, green), color-stop(1, #005700));
         background-image: -webkit-linear-gradient(green, #005700); }
   .dk-inner .dk-content {
-    width: 72%;
+    width: 100%;
     float: left; }
     .dk-inner .dk-content .dk-widget {
       border: 1px solid #ccc;
