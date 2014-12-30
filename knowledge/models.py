@@ -150,11 +150,11 @@ class Question(KnowledgeBase):
     _requesting_user = None
 
     title = models.CharField(max_length=255,
-        verbose_name=_('Question'),
-        help_text=_('Enter your question or suggestion.'))
+        verbose_name=_('Title'),
+        help_text=_('Enter your article title.'))
     body = RichTextField(blank=True, null=True,
         verbose_name=_('Description'),
-        help_text=_('Please offer details.'))
+        help_text=_('Please offer details of this topic.'))
 
     status = models.CharField(
         verbose_name=_('Status'),
@@ -169,8 +169,8 @@ class Question(KnowledgeBase):
 
     class Meta:
         ordering = ['-added']
-        verbose_name = _('Question')
-        verbose_name_plural = _('Questions')
+        verbose_name = _('Article')
+        verbose_name_plural = _('Articles')
 
     def __unicode__(self):
         return self.title
