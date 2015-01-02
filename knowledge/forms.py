@@ -58,12 +58,6 @@ def QuestionForm(user, *args, **kwargs):
                     qf.widget = qf.hidden_widget()
                     qf.required = False
             
-            #Not sure about 'category' or 'category_create'
-            self.fields['categories'].widget = CustomRelatedFieldWidgetWrapper(
-                                                FilteredSelectMultiple(('category'),False,),
-                                                reverse('admin:knowledge_category_add'),
-                                                True)
-
             self.fields['categories'].queryset = Category.objects.all()
 
         # honey pot!
