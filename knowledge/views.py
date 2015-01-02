@@ -17,8 +17,6 @@ ALLOWED_MODS = {
         'clear_accepted'
     ],
     'response': [
-        'internal', 'inherit',
-        'private', 'public',
         'delete', 'accept'
     ]
 }
