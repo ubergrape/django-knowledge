@@ -114,7 +114,7 @@ def ResponseForm(user, question, *args, **kwargs):
                     qf.widget = qf.hidden_widget()
                     qf.required = False
 
-            self.status = 'inherited'
+            self.status = 'inherit'
 
         # honey pot!
         phone_number = forms.CharField(required=False)
