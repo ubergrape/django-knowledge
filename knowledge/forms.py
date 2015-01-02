@@ -96,9 +96,6 @@ def ResponseForm(user, question, *args, **kwargs):
 
     selected_fields += ['body', 'question']
 
-    if user.is_staff:
-        selected_fields += ['status']
-
     if settings.ALERTS:
         selected_fields += ['alert']
 
@@ -116,6 +113,8 @@ def ResponseForm(user, question, *args, **kwargs):
                 if qf:
                     qf.widget = qf.hidden_widget()
                     qf.required = False
+
+            self.status = 'inherited'
 
         # honey pot!
         phone_number = forms.CharField(required=False)
