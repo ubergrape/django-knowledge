@@ -159,7 +159,7 @@ class Question(KnowledgeBase):
     status = models.CharField(
         verbose_name=_('Status'),
         max_length=32, choices=STATUSES,
-        default='private', db_index=True)
+        default='internal', db_index=True)
 
     locked = models.BooleanField(default=False)
 
