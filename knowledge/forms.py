@@ -7,7 +7,7 @@ from widgets import CustomRelatedFieldWidgetWrapper
 from django.contrib.admin.widgets import FilteredSelectMultiple
 from django.core.urlresolvers import reverse
 
-OPTIONAL_FIELDS = ['alert', 'phone_number', 'categories']
+OPTIONAL_FIELDS = ['alert', 'phone_number', 'categories', 'status']
 
 
 __todo__ = """
@@ -29,7 +29,7 @@ def QuestionForm(user, *args, **kwargs):
         else:
             selected_fields = ['name', 'email', 'title', 'body']
     else:
-        selected_fields = ['user', 'title', 'body', 'status', 'categories']
+        selected_fields = ['user', 'title', 'body', 'categories']
 
     if settings.ALERTS:
         selected_fields += ['alert']
@@ -41,13 +41,6 @@ def QuestionForm(user, *args, **kwargs):
             for key in self.fields:
                 if not key in OPTIONAL_FIELDS:
                     self.fields[key].required = True
-
-            # hide the internal status for non-staff
-            qf = self.fields.get('status', None)
-            if qf and not user.is_staff:
-                choices = list(qf.choices)
-                choices.remove(('internal', _('Internal')))
-                qf.choices = choices
 
             # a bit of a hack...
             # hide a field, and use clean to force
