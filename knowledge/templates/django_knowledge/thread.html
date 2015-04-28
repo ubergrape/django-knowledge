@@ -1,7 +1,7 @@
 {% extends 'django_knowledge/inner.html' %}
 
 {% load i18n %}
-{% load mezzanine_tags %}
+{% load md2 %}
 {% load knowledge_tags %}
 {% load url from future %}
 
@@ -23,7 +23,7 @@
         &nbsp;{{ question.added }}
       </span></h5>
 
-      {{ question.body|richtext_filters|safe }}
+      {{ question.body|markdown }}
 
       {% include "django_knowledge/mod_bar.html" with allowed_mods=allowed_mods.question type="question" node=question %}
     </div>
@@ -48,7 +48,7 @@
           &nbsp;{{ response.added }}
         </span></h5>
 
-        {{ response.body|richtext_filters|safe }}
+        {{ response.body|markdown }}
 
         {% include "django_knowledge/mod_bar.html" with allowed_mods=allowed_mods.response type="response" node=response %}
       </div>
