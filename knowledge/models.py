@@ -8,7 +8,6 @@ from django.conf import settings as django_settings
 from knowledge.managers import QuestionManager, ResponseManager
 from knowledge.signals import knowledge_post_save
 
-from mezzanine.core.fields import RichTextField
 
 STATUSES = (
     ('public', _('Public')),
@@ -152,7 +151,7 @@ class Question(KnowledgeBase):
     title = models.CharField(max_length=255,
         verbose_name=_('Title'),
         help_text=_('Enter your article title.'))
-    body = RichTextField(blank=True, null=True,
+    body = models.TextField(blank=True, null=True,
         verbose_name=_('Description'),
         help_text=_('Please offer details of this topic.'))
 
@@ -256,7 +255,7 @@ class Response(KnowledgeBase):
     question = models.ForeignKey('knowledge.Question',
         related_name='responses')
 
-    body = RichTextField(blank=True, null=True,
+    body = models.TextField(blank=True, null=True,
         verbose_name=_('Response'),
         help_text=_('Please enter your response.'))
     status = models.CharField(
