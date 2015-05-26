@@ -3,11 +3,8 @@ from django.db.models import Q
 
 
 class QuestionManager(models.Manager):
-    # def get_query_set(self, *args, **kwargs):
-    #     return super(QuestionManager, self).get_query_set(*args, **kwargs)
-
     def can_view(self, user):
-        qs = super(QuestionManager, self).get_query_set()\
+        qs = super(QuestionManager, self).get_queryset()\
                                          .select_related('user')
 
         if user.is_staff or user.is_superuser:
@@ -22,12 +19,8 @@ class QuestionManager(models.Manager):
 
 
 class ResponseManager(models.Manager):
-    # def all(self, *args, **kwargs):
-    #     return super(ResponseManager, self).all(*args, **kwargs)\
-    #                                        .select_related('question', 'user')
-
     def can_view(self, user):
-        qs = super(ResponseManager, self).get_query_set()\
+        qs = super(ResponseManager, self).get_queryset()\
                                          .select_related('question', 'user')
 
         if user.is_staff or user.is_superuser:
